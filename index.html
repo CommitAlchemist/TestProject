@@ -3,10 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TestHTML</title>
-    
+    <meta name="description" content="Rate & Review Top Netflix Movies">
+    <title>🍿 MovieHub - Rate Top Netflix Shows</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:Arial,sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;}
+        header{background:#e50914;padding:1rem;text-align:center;}
+        main{max-width:1200px;margin:0 auto;padding:2rem;}
+        article{margin-bottom:2rem;border:1px solid #333;padding:1.5rem;border-radius:8px;}
+        aside{float:right;width:300px;margin-left:2rem;background:#222;padding:1rem;border-radius:8px;}
+        nav ul{display:flex;gap:1rem;justify-content:center;list-style:none;}
+        nav a{color:#fff;text-decoration:none;padding:0.5rem 1rem;border-radius:4px;}
+        nav a:hover{background:#ff0000;}
+        figure{margin:1rem 0;text-align:center;}
+        figcaption{font-style:italic;color:#ccc;}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;}
+        th,td{padding:0.8rem;text-align:left;border-bottom:1px solid #444;}
+        th{background:#333;}
+        progress{width:100%;height:20px;}
+        details{margin:1rem 0;} summary{cursor:pointer;font-weight:bold;}
+        footer{background:#000;padding:2rem;text-align:center;}
+        form{display:grid;gap:1rem;max-width:500px;}
+        input,select,textarea{padding:0.8rem;border:1px solid #555;border-radius:4px;background:#333;color:#fff;}
+        button{padding:1rem 2rem;background:#e50914;border:none;color:white;border-radius:4px;cursor:pointer;}
+        button:hover{background:#ff0000;}
+        @media (max-width:768px){aside{float:none;width:100%;margin:1rem 0;}}
+    </style>
 </head>
 <body>
-      <h1>Test file</h1> 
+    <!-- HEADER & NAV -->
+    <header>
+        <h1>🍿 <strong>MovieHub</strong> - Top Netflix Reviews</h1>
+        <nav>
+            <ul>
+                <li><a href="#top10">Top 10</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#add-review">Add Review</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- TOP 10 SECTION -->
+        <section id="top10">
+            <h2>📺 Top 10 Netflix Series Right Now</h2>
+            <ol>
+                <li><strong>Stranger Things</strong> - Sci-fi classic</li>
+                <li><strong>The Abandons</strong> - Western drama</li>
+                <li><strong>Squid Game S2</strong> - Survival thriller</li>
+                <li><strong>Black Mirror</strong> - Anthology</li>
+                <li><strong>The Crown</strong> - Royal drama</li>
+                <li><strong>Wednesday</strong> - Mystery comedy</li>
+                <li><strong>Bridgerton</strong> - Romance</li>
+                <li><strong>The Witcher</strong> - Fantasy</li>
+                <li><strong>Arcane</strong> - Animation</li>
+                <li><strong>You</strong> - Psychological thriller</li>
+            </ol>
+            
+            <figure>
+                <img src="https://via.placeholder.com/400x250/e50914/ffffff?text=Netflix+Top+10" alt="Top 10 Netflix graphic" width="400" height="250" loading="lazy">
+                <figcaption>Current Netflix Top 10 TV chart [generated_image:35]</figcaption>
+            </figure>
+        </section>
+
+        <!-- REVIEWS SECTION -->
+        <section id="reviews">
+            <h2>⭐ User Reviews</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stranger Things</td>
+                        <td><meter value="9" max="10">9/10</meter></td>
+                        <td>Awesome nostalgia!</td>
+                        <td>2025-12-05</td>
+                    </tr>
+                    <tr>
+                        <td>Squid Game</td>
+                        <td><progress value="95" max="100">95%</progress></td>
+                        <td>Intense & gripping</td>
+                        <td>2025-12-04</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside>
+            <h3>📊 Quick Stats</h3>
+            <dl>
+                <dt>Total Reviews:</dt>
+                <dd><output id="totalReviews">127</output></dd>
+                <dt>Avg Rating:</dt>
+                <dd><output id="avgRating">4.7</output>/5</dd>
+            </dl>
+        </aside>
+
+        <!-- ADD REVIEW FORM -->
+        <section id="add-review">
+            <h2>✍️ Add Your Review</h2>
+            <form>
+                <label for="movie">Movie/Show:</label>
+                <datalist id="movies">
+                    <option value="Stranger Things">
+                    <option value="Squid Game">
+                    <option value="The Crown">
+                </datalist>
+                <input type="text" id="movie" name="movie" list="movies" required>
+
+                <label>Rating:</label>
+                <input type="range" id="rating" name="rating" min="1" max="5" step="0.5" value="5">
+                <output for="rating" id="ratingValue">5/5</output>
+
+                <label for="reviewer">Your Name:</label>
+                <input type="text" id="reviewer" name="reviewer" required>
+
+                <fieldset>
+                    <legend>Genre Preference:</legend>
+                    <input type="radio" id="action" name="genre" value="action">
+                    <label for="action">Action</label>
+                    <input type="radio" id="drama" name="genre" value="drama">
+                    <label for="drama">Drama</label>
+                    <input type="radio" id="comedy" name="genre" value="comedy">
+                    <label for="comedy">Comedy</label>
+                </fieldset>
+
+                <label>Multiple Genres:</label>
+                <input type="checkbox" id="scifi" name="genres[]" value="scifi">
+                <label for="scifi">Sci-Fi</label>
+                <input type="checkbox" id="fantasy" name="genres[]" value="fantasy">
+                <label for="fantasy">Fantasy</label>
+
+                <label for="reviewDate">Review Date:</label>
+                <input type="date" id="reviewDate" name="reviewDate">
+
+                <label for="reviewTime">Time:</label>
+                <input type="time" id="reviewTime" name="reviewTime">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="website">Your Site:</label>
+                <input type="url" id="website" name="website">
+
+                <label for="review">Your Review:</label>
+                <textarea id="review" name="review" rows="5" maxlength="500" required 
+                          placeholder="What did you think?"></textarea>
+
+                <label for="screenshot">Screenshot:</label>
+                <input type="file" id="screenshot" name="screenshot" accept="image/*">
+
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority">
+                    <optgroup label="Urgency">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high" selected>High</option>
+                    </optgroup>
+                </select>
+
+                <label for="theme">Theme:</label>
+                <input type="color" id="theme" name="theme" value="#e50914">
+
+                <input type="hidden" name="submission_id" value="rev_20251206">
+
+                <button type="submit">🚀 Post Review</button>
+                <button type="reset">🔄 Clear</button>
+            </form>
+        </section>
+
+        <!-- FAQ -->
+        <details>
+            <summary>❓ FAQ: How to use MovieHub?</summary>
+            <p>Fill the form above, rate 1-5 stars, add your thoughts!</p>
+        </details>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MovieHub. Built with <strong>ALL HTML TAGS</strong> 🎉</p>
+        <address>Contact: <a href="mailto:moviehub@example.com">moviehub@example.com</a></address>
+    </footer>
+
+    <script>
+        // Rating sync
+        document.getElementById('rating').oninput = function() {
+            document.getElementById('ratingValue').value = this.value + '/5';
+        };
+        
+        // Single checkbox (like before)
+        document.querySelectorAll('input[name="genres[]"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                if (this.checked) {
+                    document.querySelectorAll('input[name="genres[]"]').forEach(other => {
+                        if (other !== this) other.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
